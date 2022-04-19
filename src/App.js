@@ -1,11 +1,15 @@
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import "./App.css";
 import { AppRouter } from "./components/AppRouter";
+import { store } from "./store";
+import "./styles/base.sass";
 
 function App() {
   return (
     <BrowserRouter>
-      <AppRouter />
+      <Provider store={store}>
+        <AppRouter />
+      </Provider>
     </BrowserRouter>
   );
 }

@@ -17,7 +17,7 @@ export const AppRouter = () => {
           <Route path={NEWS_URL} element={<NewsPage />} />
           <Route
             path="*"
-            element={<Link to={MAIN_URL}>Go to the home page</Link>}
+            element={<Link to={MAIN_URL}>Вернуться на главную страницу</Link>}
           />
         </Route>
       </Routes>

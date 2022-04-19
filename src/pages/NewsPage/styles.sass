@@ -1,0 +1,22 @@
+.news-page
+    display: flex
+    flex-direction: column
+    max-width: 1024px
+    margin: 0 auto
+    padding: 20px
+
+    .news-page__search
+        max-width: 50%
+        margin: 20px 0
+        background: white
+
+    .news-page__news-container
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(3, 1fr)
+        grid-column-gap: 20px
+        grid-row-gap: 20px
+        @media (max-width: 768px) 
+            grid-template-columns: 1fr
+            grid-template-rows: repeat(3, 1fr)
+        
