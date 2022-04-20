@@ -1,3 +1,5 @@
+@import "../../styles/colors.sass"
+    
 .news-page
     display: flex
     flex-direction: column
@@ -9,6 +11,20 @@
         max-width: 50%
         margin: 20px 0
         background: white
+        flex-grow: 1
+        @media (max-width: 474px)
+            max-width: 100%
+    
+    .news-page__toolbar-container
+        display: flex
+        flex-wrap: wrap
+
+    .news-page__add-button
+        margin: 20px
+        color: $text-color
+        font-weight: bold
+        &:hover
+            color: $button-hover
 
     .news-page__news-container
         display: grid

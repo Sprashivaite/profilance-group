@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 import { signIn } from "../../store/userReducer";
 import data from "../../data";
 import "./styles.sass";
@@ -46,9 +47,12 @@ export const AuthModal = (props) => {
 
   return (
     <>
-      <Button {...props} onClick={() => setIsDialogOpened(true)}>
-        Войти
-      </Button>
+      <Button
+        {...props}
+        onClick={() => setIsDialogOpened(true)}
+        children="Войти"
+      />
+
       <Dialog
         open={isDialogOpened}
         onClose={() => setIsDialogOpened(false)}
@@ -57,10 +61,9 @@ export const AuthModal = (props) => {
       >
         <Paper className="auth-modal">
           <DialogTitle>
-            <Typography variant="h6" gutterBottom>
-              Авторизация
-            </Typography>
+            <Typography variant="h6" gutterBottom children="Авторизация" />
           </DialogTitle>
+
           <DialogContent>
             <Box className="auth-modal__container">
               <TextField
@@ -68,21 +71,26 @@ export const AuthModal = (props) => {
                 onChange={(event) => setLogin(event.target.value)}
                 placeholder="Логин"
               />
+
               <TextField
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 type="password"
                 placeholder="Пароль"
               />
+
               {error && (
                 <Alert severity="error">Неправильный логин или пароль</Alert>
               )}
             </Box>
           </DialogContent>
+
           <DialogActions>
-            <Button className="auth-modal__button" onClick={handleButtonSignIn}>
-              Войти
-            </Button>
+            <Button
+              className="auth-modal__button"
+              onClick={handleButtonSignIn}
+              children="Войти"
+            />
           </DialogActions>
         </Paper>
       </Dialog>

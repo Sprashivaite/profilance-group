@@ -5,13 +5,15 @@ const defaultState = {
   password: null,
   isAuthorized: false,
   isAdmin: false,
-  ...user,
 };
 
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
 
-export default function userReducer(state = defaultState, action) {
+export default function userReducer(
+  state = { ...defaultState, ...user },
+  action
+) {
   switch (action.type) {
     case SIGN_IN:
       localStorage.setItem("user", JSON.stringify(action.payload));

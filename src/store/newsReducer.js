@@ -10,6 +10,7 @@ export default function newsReducer(state = data.news, action) {
   switch (action.type) {
     case GET_NEWS:
       return state;
+
     case GET_FILTERED_NEWS:
       return [
         ...state.filter(
@@ -17,14 +18,18 @@ export default function newsReducer(state = data.news, action) {
             news.body.match(action.payload) || news.title.match(action.payload)
         ),
       ];
+
     case ADD_NEWS:
       return [...state, action.payload];
+
     case APPROVE_NEWS:
       return state.map((news) =>
         news.id === action.payload ? { ...news, approved: true } : news
       );
+
     case REJECT_NEWS:
       return state.filter((news) => news.id !== action.payload);
+
     default:
       return state;
   }

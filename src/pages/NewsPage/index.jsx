@@ -1,26 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import "./styles.sass";
 
 import { NewsItem } from "../../components/NewsItem";
-import {
-  approveNews,
-  getFilteredNews,
-  rejectNews,
-} from "../../store/newsReducer";
+import { NewsModal } from "../../components/NewsModal";
+import { approveNews, rejectNews } from "../../store/newsReducer";
 
 export const NewsPage = () => {
   const userState = useSelector((state) => state.userReducer);
-  const newsState = useSelector((state) =>
-    state.newsReducer.filter((news) => {
-      if (!userState.isAdmin) {
-        return news.approved === true;
-      }
-      return true;
-    })
-  );
-
+  const newsState = useSelector((state) => state.newsReducer);
   const dispatch = useDispatch();
 
   const filterNews = (value) => {
@@ -33,11 +22,16 @@ export const NewsPage = () => {
 
   return (
     <div className="news-page">
-      <TextField
-        placeholder="Поиск"
-        onChange={(event) => filterNews(event.target.value)}
-        className="news-page__search"
-      />
+      <div className="news-page__toolbar-container">
+        <TextField
+          placeholder="Поиск"
+          onChange={(event) => filterNews(event.target.value)}
+          className="news-page__search"
+        />
+        {userState.isAuthorized && (
+          <NewsModal className="news-page__add-button" />
+        )}
+      </div>
       <div className="news-page__news-container">
         {newsState.map((news) => (
           <NewsItem
@@ -48,6 +42,8 @@ export const NewsPage = () => {
             approved={news.approved}
             onApprove={() => dispatch(approveNews(news.id))}
             onReject={() => dispatch(rejectNews(news.id))}
+            isAdmin={userState.isAdmin}
+            isAuthorized={userState.isAuthorized}
           />
         ))}
       </div>

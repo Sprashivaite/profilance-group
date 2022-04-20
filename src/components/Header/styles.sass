@@ -9,12 +9,17 @@
         justify-content: space-between
         margin: 0 auto
         padding: 20px
+        @media (max-width: 520px) 
+            align-items: flex-end
+            flex-direction: column
+        
     .header__logo
         cursor: pointer
         transition: 0.3s
         &:hover
            color: $button-hover
            opacity: 0.7
+           
     .header__button
         margin: 0 10px
         color: $text-color

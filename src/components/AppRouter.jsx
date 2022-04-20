@@ -11,7 +11,7 @@ export const AppRouter = () => {
   return (
     <ErrorBoundary>
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route element={<Header />}>
           <Route path={AUTHORIZATION_URL} element={<AuthModal />} />
           <Route path={MAIN_URL} element={<MainPage />} />
           <Route path={NEWS_URL} element={<NewsPage />} />

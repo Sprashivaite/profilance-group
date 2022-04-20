@@ -4,6 +4,7 @@ import "./styles.sass";
 
 export const MainPage = () => {
   const state = useSelector((state) => state.userReducer);
+
   return (
     <div className="main-page">
       <h1 className="main-page__title">

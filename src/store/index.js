@@ -1,7 +1,8 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
+import { composeWithDevTools } from "@redux-devtools/extension";
+
 import newsReducer from "./newsReducer";
 import userReducer from "./userReducer";
-import { composeWithDevTools } from "@redux-devtools/extension";
 
 const rootReducer = combineReducers({
   newsReducer,

@@ -1,4 +1,4 @@
-import { Button, Paper, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import CheckIcon from "@mui/icons-material/Check";
 import "./styles.sass";
@@ -10,25 +10,38 @@ export const NewsItem = ({
   approved,
   onApprove,
   onReject,
+  isAdmin,
+  isAuthorized,
 }) => {
+  if (!isAuthorized && !approved) return null;
+
   return (
     <div className="news-item">
-      <Typography variant="h6" gutterBottom>
-        {title}
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        {body}
-      </Typography>
+      <Typography variant="h6" gutterBottom children={title} />
+      <Typography variant="body1" gutterBottom children={body} />
       <div className="news-item__date">{date}</div>
-      {!approved && (
+
+      {!approved && isAdmin && (
         <div className="news-item__buttons">
-          <Button title="отклонить" onClick={onReject}>
-            <ClearIcon color="primary" />
-          </Button>
-          <Button title="подтвердить" onClick={onApprove}>
-            <CheckIcon color="primary" />
-          </Button>
+          <Button
+            title="отклонить"
+            onClick={onReject}
+            children={<ClearIcon color="primary" />}
+          />
+          <Button
+            title="подтвердить"
+            onClick={onApprove}
+            children={<CheckIcon color="primary" />}
+          />
         </div>
+      )}
+
+      {!approved && !isAdmin && (
+        <Typography
+          variant="body1"
+          gutterBottom
+          children="Новость находиться на проверке"
+        />
       )}
     </div>
   );
