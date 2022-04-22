@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import { signOut } from "../../store/userReducer";
-import { MAIN_URL, NEWS_URL, IMAGE_URL } from "../../consts";
+import { NEWS_URL, IMAGE_URL } from "../../consts";
 import { AuthModal } from "../AuthModal";
 import "./styles.sass";
 
@@ -18,7 +18,7 @@ export const Header = () => {
       <div className="header">
         <div className="header__container">
           <img
-            onClick={() => navigate(MAIN_URL)}
+            onClick={() => navigate("/")}
             src={IMAGE_URL}
             alt="Profilance Group Logo"
             className="header__logo"
