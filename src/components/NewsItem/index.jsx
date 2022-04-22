@@ -1,6 +1,8 @@
 import { Button, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import CheckIcon from "@mui/icons-material/Check";
+import { parseISO } from "date-fns";
+
 import "./styles.sass";
 
 export const NewsItem = ({
@@ -19,7 +21,7 @@ export const NewsItem = ({
     <div className="news-item">
       <Typography variant="h6" gutterBottom children={title} />
       <Typography variant="body1" gutterBottom children={body} />
-      <div className="news-item__date">{date}</div>
+      <div className="news-item__date">{parseISO(date).toLocaleString()}</div>
 
       {!approved && isAdmin && (
         <div className="news-item__buttons">

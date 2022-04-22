@@ -12,6 +12,7 @@ import {
   DialogContent,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { formatISO } from "date-fns";
 
 import { addNews } from "../../store/newsReducer";
 import "./styles.sass";
@@ -25,7 +26,9 @@ export const NewsModal = (props) => {
 
   const handleButtonSignIn = () => {
     if (title && body) {
-      dispatch(addNews({ title, body, id: Date.now() }));
+      dispatch(
+        addNews({ title, body, id: Date.now(), date: formatISO(Date.now()) })
+      );
       setIsDialogOpened(false);
       setTitle(null);
       setBody(null);

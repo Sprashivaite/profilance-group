@@ -39,7 +39,7 @@ export const AuthModal = (props) => {
           isAdmin: foundUser.isAdmin,
         })
       );
-      navigate("/main");
+      navigate("/");
     } else {
       setError(true);
     }

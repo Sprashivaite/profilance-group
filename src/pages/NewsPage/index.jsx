@@ -36,7 +36,7 @@ export const NewsPage = () => {
             key={news.id}
             title={news.title}
             body={news.body}
-            date={Date.now()}
+            date={news.date}
             approved={news.approved}
             onApprove={() => dispatch(approveNews(news.id))}
             onReject={() => dispatch(rejectNews(news.id))}
